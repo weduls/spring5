@@ -21,7 +21,6 @@ repositories {
 dependencies {
     // tomcat
     compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version:'8.5.29'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

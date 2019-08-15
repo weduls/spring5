@@ -3,7 +3,7 @@ package com.study.webflex;
 import com.study.webflex.handler.PostHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.reactive.config.DelegatingWebFluxConfiguration;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.config.EnableWebFlux;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
@@ -20,7 +20,8 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
  **/
 @ComponentScan
 @EnableWebFlux
-public class WebFluxConfig extends DelegatingWebFluxConfiguration {
+@Configuration
+public class WebFluxConfig {
 
   @Bean
   public RouterFunction<?> routes(PostHandler postHandler) {
