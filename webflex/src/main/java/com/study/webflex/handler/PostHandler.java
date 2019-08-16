@@ -6,7 +6,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.time.Duration;
 
 /**
  * spring-boot-study
@@ -31,6 +34,15 @@ public class PostHandler {
 
   public Mono<ServerResponse> create(ServerRequest serverRequest) {
     return serverRequest.bodyToMono(Post.class).doOnNext(post -> postService.createPost(post)).then(ServerResponse.ok().build());
+  }
+
+  public Mono<ServerResponse> clientDelay(ServerRequest serverRequest) {
+    Flux<Post> post = Flux.interval(Duration.ofSeconds(2))
+      .take(3)
+      .flatMap(number -> postService.findById(number.intValue()));
+
+    System.out.println("test");
+    return ServerResponse.ok().body(post, Post.class);
   }
 
 }

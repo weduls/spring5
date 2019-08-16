@@ -27,7 +27,8 @@ public class WebFluxConfig {
   public RouterFunction<?> routes(PostHandler postHandler) {
     return RouterFunctions.route(GET("/route").and(accept(APPLICATION_JSON)), postHandler::all)
       .andRoute(GET("/route/{id}").and(accept(APPLICATION_JSON)), postHandler::get)
-      .andRoute(GET("/route/create").and(accept(APPLICATION_JSON)), postHandler::create);
+      .andRoute(GET("/route/create").and(accept(APPLICATION_JSON)), postHandler::create)
+      .andRoute(GET("/delay/client").and(accept(APPLICATION_JSON)), postHandler::clientDelay);
   }
 
 }

@@ -23,7 +23,7 @@ public class PostRepository {
 
   static {
     // initial data
-    Arrays.asList("First Post", "Second Post")
+    Arrays.asList("First Post", "Second Post", "Third Post")
       .stream()
       .forEach(title -> {
           int id = ID_COUNTER++;
